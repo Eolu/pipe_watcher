@@ -1,0 +1,18 @@
+[package]
+name = "pipe_watcher"
+version = "1.0.0"
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+authors = ["Griffin O'Neill <gsoneill1003@gmail.com>"]
+edition = "2018"
+description = """
+A pipe watcher for the terminal. Made for use with the ipipe Rust library.
+"""
+keywords = ["pipe", "ipc", "fifo", "cli", "terminal"]
+homepage = "https://github.com/Eolu/pipe_watcher"
+repository = "https://github.com/Eolu/pipe_watcher"
+categories = ["filesystem", "os::unix-apis", "os::windows-apis", "api-bindings"]
+documentation = "https://docs.rs/pipe_watcher"
+
+[dependencies]
+ipipe = { version = "*", default-features = false }
