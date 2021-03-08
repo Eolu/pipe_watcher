@@ -15,4 +15,4 @@ categories = ["filesystem", "os::unix-apis", "os::windows-apis", "api-bindings"]
 documentation = "https://docs.rs/pipe_watcher"
 
 [dependencies]
-ipipe = { version = "*", default-features = false }
+ipipe = { version = "0.4.1", default-features = false }

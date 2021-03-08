@@ -4,7 +4,7 @@ use ipipe::*;
 
 fn main() -> Result<()>
 {
-    for thread in std::env::args().skip(1).map(|name| 
+    let threads = std::env::args().skip(1).map(|name| 
     {
         thread::spawn(move ||
         {
@@ -24,9 +24,12 @@ fn main() -> Result<()>
                 }
             }
         })
-    })
+    }).collect::<Vec<std::thread::JoinHandle<()>>>();
+
+    for thread in threads
     {
         thread.join().unwrap();
     }
+    
     Ok(())
 }
