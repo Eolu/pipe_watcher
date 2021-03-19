@@ -10,7 +10,7 @@ fn main() -> Result<()>
         {
             let pipe = if name.contains('/') || name.contains('\\')
             {
-                Pipe::open(&std::path::PathBuf::from(name), OnCleanup::NoDelete).unwrap()
+                Pipe::open(std::path::Path::new(&name), OnCleanup::NoDelete).unwrap()
             }
             else
             {
