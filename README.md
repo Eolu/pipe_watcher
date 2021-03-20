@@ -55,7 +55,7 @@ fn main()
 }
 ```
 
-Then start typing into the terminal, hit enter, and watch the magic happen. Note that binaries are NOT line-buffered by default.
+Then start typing into the terminal, hit enter, and watch the magic happen. Note that these binaries are NOT line-buffered by default.
 
 ### Pipe names:
 
