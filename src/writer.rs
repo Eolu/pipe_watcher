@@ -1,7 +1,6 @@
 use std::{io::Write, thread};
 use ipipe::*;
-use std::sync::mpsc::{Sender, Receiver, SendError};
-use std::sync::mpsc;
+use std::sync::mpsc::{self, Sender, Receiver, SendError};
 use getch::*;
 
 mod shared;
