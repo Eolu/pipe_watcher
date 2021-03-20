@@ -1,0 +1,2 @@
+cargo build --release --bin pipe_listener
+cargo build --release --bin pipe_writer --features="getch"

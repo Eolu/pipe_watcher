@@ -1,12 +1,12 @@
 [package]
 name = "pipe_watcher"
-version = "1.0.1"
+version = "2.0.0"
 license = "MIT OR Apache-2.0"
 readme = "README.md"
 authors = ["Griffin O'Neill <gsoneill1003@gmail.com>"]
 edition = "2018"
 description = """
-A pipe watcher for the terminal. Made for use with the ipipe Rust library.
+A pipe reader and writer for the terminal. Made for use with the ipipe Rust library.
 """
 keywords = ["pipe", "ipc", "fifo", "cli", "terminal"]
 homepage = "https://github.com/Eolu/pipe_watcher"
@@ -14,5 +14,16 @@ repository = "https://github.com/Eolu/pipe_watcher"
 categories = ["filesystem", "os::unix-apis", "os::windows-apis", "api-bindings"]
 documentation = "https://docs.rs/pipe_watcher"
 
+[[bin]]
+name = "pipe_listener"
+path = "src/listener.rs"
+required-features = []
+
+[[bin]]
+name = "pipe_writer"
+path = "src/writer.rs"
+required-features = ["getch"]
+
 [dependencies]
 ipipe = { version = "0.7.3", default-features = false }
+getch = { version = "0.2.1", optional = true }
