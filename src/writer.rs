@@ -97,16 +97,6 @@ fn input_watcher(tx: Sender<u8>) -> std::result::Result<(), SendError<u8>>
                 {
                     eprintln!("{:?}", e)
                 }
-                
-                // Send a line feed after a carriage return on Windows
-                #[cfg(windows)]
-                if byte == 13
-                {
-                    if let Err(e) = tx.send(10)
-                    {
-                        eprintln!("{:?}", e)
-                    }
-                }
             },
             Err(e) => eprintln!("{:?}", e)
         }
