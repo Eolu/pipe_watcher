@@ -4,7 +4,7 @@ These programs can easily be used in conjunction to redirect named-pipe I/O will
 
 # To Install
 
-`cargo install pipe_listener`
+`cargo install pipe_watcher`
 
 # Pipe Listener
 
