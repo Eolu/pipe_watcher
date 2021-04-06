@@ -1,6 +1,6 @@
 [package]
 name = "pipe_watcher"
-version = "2.0.3"
+version = "2.0.4"
 license = "MIT OR Apache-2.0"
 readme = "README.md"
 authors = ["Griffin O'Neill <gsoneill1003@gmail.com>"]
@@ -23,6 +23,9 @@ required-features = []
 name = "pipe_writer"
 path = "src/writer.rs"
 required-features = ["getch"]
+
+[features]
+default = ["getch"]
 
 [dependencies]
 ipipe = { version = "0.7.4", default-features = false }

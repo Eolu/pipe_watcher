@@ -2,6 +2,10 @@ This crate compiles 2 binaries can be used with the [ipipe](https://github.com/E
 
 These programs can easily be used in conjunction to redirect named-pipe I/O willy-nilly.
 
+# To Install
+
+`cargo install pipe_listener`
+
 # Pipe Listener
 
 Usage: `pipe_listener [pipe_name...]`
