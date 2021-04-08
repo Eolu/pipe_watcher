@@ -28,5 +28,5 @@ required-features = ["getch"]
 default = ["getch"]
 
 [dependencies]
-ipipe = { version = "*", default-features = false }
+ipipe = { version = "0.8", default-features = false }
 getch = { version = "0.2.1", optional = true }

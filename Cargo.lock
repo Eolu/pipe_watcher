@@ -30,9 +30,9 @@ dependencies = [
 
 [[package]]
 name = "ipipe"
-version = "0.7.4"
+version = "0.8.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "da16b12a1280b3070983823494ffec9c5dd37803ab9e69a68118987622a01952"
+checksum = "e9a27626f56d9ea7d68ab3ce2241e4852d3e68a76ea730e70a0883e6f9efd71e"
 dependencies = [
  "nix",
  "winapi",
