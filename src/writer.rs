@@ -1,6 +1,6 @@
-use std::{io::Write, thread};
+use std::{io::Write, thread, thread::JoinHandle};
 use ipipe::*;
-use std::sync::mpsc::{self, Sender, Receiver, SendError};
+use std::sync::mpsc::{self, Sender, Receiver, SendError, RecvError};
 use getch::*;
 
 mod shared;
@@ -15,7 +15,7 @@ fn main() -> Result<()>
     thread::spawn(move || input_watcher(tx));
 
     let senders = pipes.into_iter().map(pipe_write_thread)
-        .collect::<Vec<Sender<u8>>>();
+        .collect::<Vec<(JoinHandle<()>, Sender<u8>)>>();
     
     loop
     {
@@ -23,7 +23,7 @@ fn main() -> Result<()>
         {
             Ok(byte) => 
             {
-                for tx in senders.iter()
+                for tx in senders.iter().map(|(_, pipe)| pipe)
                 {
                     if let Err(e) = tx.send(byte)
                     {
@@ -31,18 +31,30 @@ fn main() -> Result<()>
                     }
                 }
             }
-            Err(std::sync::mpsc::RecvError) => 
+            Err(RecvError) => 
             {
-                break Ok(());
+                break;
             }
         }
     }
+
+    for (thread, tx) in senders.into_iter()
+    {
+        drop(tx);
+        match thread.join()
+        {
+            Err(_) => {}
+            Ok(_) => {}
+        }
+    }
+
+    Ok(())
 }
 
-fn pipe_write_thread(mut pipe: Pipe) -> Sender<u8>
+fn pipe_write_thread(mut pipe: Pipe) -> (JoinHandle<()>, Sender<u8>)
 {
     let (tx, rx): (Sender<u8>, Receiver<u8>) = mpsc::channel();
-    thread::spawn(move ||
+    (thread::spawn(move ||
     {
         loop
         {
@@ -52,14 +64,13 @@ fn pipe_write_thread(mut pipe: Pipe) -> Sender<u8>
                 {
                     if let Err(e) = pipe.write(&[byte])
                     {
-                        eprintln!("{:?}", e)
+                        panic!("{}", e)
                     }
                 }
-                Err(e) => eprintln!("{:?}", e)
+                Err(_) => break
             }
         }
-    });
-    tx
+    }), tx)
 }
 
 fn open_pipes() -> Vec<Pipe>

@@ -1,6 +1,6 @@
 [package]
 name = "pipe_watcher"
-version = "2.0.6"
+version = "2.1.0"
 license = "MIT OR Apache-2.0"
 readme = "README.md"
 authors = ["Griffin O'Neill <gsoneill1003@gmail.com>"]
