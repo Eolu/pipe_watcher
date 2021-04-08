@@ -88,7 +88,7 @@ fn input_watcher(tx: Sender<u8>) -> std::result::Result<(), SendError<u8>>
         {
             Ok(byte) => 
             {
-                if byte == 3 | byte == 0
+                if byte == 3 || byte == 0
                 {
                     break Ok(());
                 }
