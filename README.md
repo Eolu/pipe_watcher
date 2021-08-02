@@ -1,6 +1,6 @@
-This crate compiles 2 binaries can be used with the [ipipe](https://github.com/Eolu/ipipe) library to interact with named pipes. The `pipe_listener` binary reads the output of one or more named pipes and writes it to standard out. The `pipe_writer` binary reads the output of standard in and writes it to one or more named pipes.
+This crate compiles 2 binaries using the the [ipipe](https://github.com/Eolu/ipipe) library to interact with named pipes. The `pipe_listener` binary reads the output of one or more named pipes and writes it to standard out. The `pipe_writer` binary reads the output of standard in and writes it to one or more named pipes.
 
-These programs can easily be used in conjunction to redirect named-pipe I/O willy-nilly.
+These programs can easily be used in conjunction to redirect named-pipe I/O willy-nilly. While they're made specifically to be useful along with the `ipipe` API, they can be used by themselves in conjunction with (probably) any other API for Windows or Unix named pipes.
 
 # To Install
 
